@@ -556,7 +556,7 @@ theorem flat_stepAt_inr_inr_same (p : S.Mode × S.Mode) (d d' : (D p.1 p.2).Mode
   have hstep : (S.flat D det).step (Sum.inr ⟨p, d⟩) (Sum.inr ⟨p, d'⟩) =
       S.innerF D det p d p d' := rfl
   unfold CoordWalk.StepAt
-  rw [hstep, innerF, dif_pos rfl, Formula.realize_sup, S.realize_runF]
+  rw [hstep, innerF, dite_eq_left rfl, Formula.realize_sup, S.realize_runF]
   refine or_congr Iff.rfl ?_
   split_ifs with h
   · rw [S.realize_advF]
@@ -574,7 +574,7 @@ theorem flat_stepAt_inr_inr_ne {p p' : S.Mode × S.Mode} (hne : p ≠ p') (d : (
   have hstep : (S.flat D det).step (Sum.inr ⟨p, d⟩) (Sum.inr ⟨p', d'⟩) =
       S.innerF D det p d p' d' := rfl
   unfold CoordWalk.StepAt
-  rw [hstep, innerF, dif_neg hne, Formula.realize_sup]
+  rw [hstep, innerF, dite_eq_right hne, Formula.realize_sup]
   simp only [Formula.realize_bot, false_or]
   split_ifs with h
   · rw [S.realize_advF]
