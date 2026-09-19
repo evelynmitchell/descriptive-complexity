@@ -814,7 +814,7 @@ theorem flat_reachAt_of_reachAt_det [Finite A] (hD : S.DecidesSteps D z) {a₀ :
   induction h with
   | refl => exact Relation.ReflTransGen.refl
   | @tail c d _ hcd ih =>
-    obtain ⟨cmin, -, hcmin⟩ := (Finite.to_wellFoundedLT (α := S.Mode)).wf.has_min Set.univ
+    obtain ⟨cmin, -, hcmin⟩ := (Finite.to_wellFoundedLT (α := S.Mode)).has_min Set.univ
       ⟨c.1, Set.mem_univ _⟩
     have hcmin' : ∀ c' : S.Mode, cmin ≤ c' := fun c' => not_lt.mp (hcmin c' (Set.mem_univ c'))
     refine ih.trans (Relation.ReflTransGen.head ?_
